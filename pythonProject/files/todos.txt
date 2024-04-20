@@ -1,8 +1,11 @@
-replaced this item
+this is todo one
 learn python
-place order
+this is todo three
 take casper for walk
-clear the gargage
+clear the garage
 Master Python!
-master C++
+master Java
 call Tom
+cast your vote
+last todo
+new last todo
