@@ -39,6 +39,7 @@ while True:
         case sg.WIN_CLOSED:
             break
 
+print('something')
 window.close()
 
 
