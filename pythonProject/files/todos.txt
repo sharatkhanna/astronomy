@@ -1,11 +1,10 @@
 this is todo one
-learn python
-this is todo three
-take casper for walk
+this is todo two
 clear the garage
 Master Python!
 master Java
 call Tom
-cast your vote
 last todo
-new last todo
+replaced last todo
+replaced todo
+master Java1
