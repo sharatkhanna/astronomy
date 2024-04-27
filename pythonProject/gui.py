@@ -1,6 +1,11 @@
 import functions
 import PySimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt", "w"):
+        pass
 
 sg.theme("Black")
 
@@ -27,10 +32,7 @@ window = sg.Window("My To-Do App",
 
 while True:
     event, values = window.read(timeout=200)
-    window["clock"].update(value=time.strftime("%d - %b - %Y %H:%M:%S"))
-    print(1, event)
-    print(2, values)
-    # print(3, values["todos"][0])
+
     match event:
         case "Add":
             todos = functions.get_todos()
@@ -38,6 +40,7 @@ while True:
             todos.append(new_todo)
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+            window['todo'].update(value="")
         case "Edit":
             try:
                 todo_to_edit = values["todos"][0]
@@ -65,6 +68,7 @@ while True:
             window['todo'].update(value=values["todos"][0])
         case sg.WIN_CLOSED:
             break
+    window["clock"].update(value=time.strftime("%d - %b - %Y %H:%M:%S"))
 
 window.close()
 
