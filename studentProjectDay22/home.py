@@ -16,9 +16,9 @@ goals efficiently and effectively.
 st.write(content1)
 st.header("Our Team")
 
-col1, empty_col1, col2, empty_col2, col3 = st.columns([1, 0.75, 1, 0.75, 1])
+col1, col2, col3 = st.columns(3)
 
-df = pandas.read_csv("data.csv", sep=",")
+df = pandas.read_csv("data.csv")
 
 with col1:
     for index, row in df[:4].iterrows():
