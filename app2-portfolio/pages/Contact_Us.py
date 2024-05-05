@@ -13,7 +13,6 @@ From: {user_email}
 {raw_message}
 """
     button = st.form_submit_button("Submit")
-    print(button)
     if button:
         send_email(raw_message)
         st.info("Your email was sent successfully.")
