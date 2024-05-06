@@ -1,5 +1,3 @@
-import pathlib
-
 import pandas as pd
 import glob
 from fpdf import FPDF
