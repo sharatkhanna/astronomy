@@ -11,5 +11,11 @@ for filepath in filepaths:
     pdf.set_font(family="Times", size=20, style="B")
     pdf.cell(w=50, h=8, txt=filename.capitalize(), ln=1)
 
+    file = open(filepath, "r")
+    content = file.read()
+
+    pdf.set_font(family="Times", size=12)
+    pdf.multi_cell(w=0, h=6, txt=content)
+
 pdf.output("output.pdf")
 
