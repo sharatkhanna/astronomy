@@ -8,9 +8,11 @@ url = ("https://newsapi.org/v2/everything?q=tesla&from=2024-04-08"
 request = requests.get(url)
 content = request.json()
 
-email_content = ""
-for article in content['articles'][0:3]:
-    email_content = email_content + article['title'] + "\n" + article['description'] + "\n\n"
+body = ""
+for article in content['articles'][0:20]:
+    if article['title'] is not None:
+        body = body + article['title'] + "\n" + article['description'] + "\n\n"
 
-print(email_content)
-# send_email(email_content)
+body = body.encode("utf-8")
+print(body)
+send_email(body)
