@@ -6,8 +6,6 @@ from pathlib import Path
 filepaths = glob.glob("invoices/*.xlsx")
 
 for filepath in filepaths:
-    df = pd.read_excel(filepath, sheet_name="Sheet 1")
-
     pdf = FPDF(orientation="L", unit="mm", format="A4")
     pdf.add_page()
 
@@ -16,7 +14,31 @@ for filepath in filepaths:
 
     pdf.set_font(family="Times", size=16, style="B")
     pdf.cell(w=50, h=8, txt=f"Invoice Nr. {invoice_nr}", ln=1)
-    pdf.cell(w=50, h=8, txt=f"Date. {inv_dt}")
+    pdf.cell(w=50, h=8, txt=f"Date. {inv_dt}", ln=1)
+    pdf.ln()
+
+    df = pd.read_excel(filepath, sheet_name="Sheet 1")
+    titles = list(df.columns)
+    titles =[item.replace("_"," ").title() for item in titles]
+
+    pdf.set_font(family="Times", size=12, style="B")
+    pdf.cell(w=30, h=8, txt=titles[0], border=1, align="C")
+    pdf.cell(w=75, h=8, txt=titles[1], border=1, align="C")
+    pdf.cell(w=40, h=8, txt=titles[2], border=1, align="C")
+    pdf.cell(w=30, h=8, txt=titles[3], border=1, align="C")
+    pdf.cell(w=30, h=8, txt=titles[4], border=1, align="C", ln=1)
+
+    print(df)
+    print((titles))
+
+    for index, row in df.iterrows():
+        pdf.set_font(family="Times", size=12)
+        pdf.set_text_color(80,80,80)
+        pdf.cell(w=30, h=8, txt=str(row['product_id']), border=1, align="C")
+        pdf.cell(w=75, h=8, txt=str(row['product_name']), border=1, align="C")
+        pdf.cell(w=40, h=8, txt=str(row['amount_purchased']), border=1, align="C")
+        pdf.cell(w=30, h=8, txt=str(row['price_per_unit']), border=1, align="C")
+        pdf.cell(w=30, h=8, txt=str(row['total_price']), border=1, align="C", ln=1)
 
     pdf.output(f"PDFs/{filename}.pdf")
 
