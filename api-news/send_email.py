@@ -17,5 +17,5 @@ def send_email(message):
 
 
 if __name__ == "__main__":
-    send_email("Hi This is a test message")
+    print("Hi This is a test message")
 

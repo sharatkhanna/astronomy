@@ -1,11 +1,10 @@
 import requests
 from send_email import send_email
 
-keyword = "india"
+keyword = "tesla"
 api_key = "02a5b172855946058cd430507b4b389e"
-url = (f"https://newsapi.org/v2/top-headlines?"
+url = (f"https://newsapi.org/v2/everything?"
        f"q={keyword.lower()}"
-       "&country=in"
        "&from=2024-04-10"
        "&sortBy=publishedAt"
        "&apiKey=02a5b172855946058cd430507b4b389e"
@@ -15,9 +14,9 @@ request = requests.get(url)
 content = request.json()
 
 body = ""
-for article in content['articles'][0:10]:
+for article in content['articles'][3:5]:
     if article['title'] is not None:
-        body = (f"Subject: Top News Articles - {keyword.title()}\n"
+        body = ("Subject: Top News for today\n"
                 + body + article['title'] + "\n"
                 + article['description'] + "\n"
                 + article["url"] + "\n\n")
