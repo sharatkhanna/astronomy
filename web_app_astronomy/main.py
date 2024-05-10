@@ -11,12 +11,19 @@ title = (content['title'])
 body = (content['explanation'])
 image_url = (content['url'])
 
-response = requests.get(image_url)
-with open("image.jpg", "wb") as file:
-    file.write(response.content)
+print(title)
+print(image_url)
+print(body)
 
-# st.set_page_config(layout="centered")
 st.title(title + "\n")
-st.image("image.jpg")
+
+if image_url.endswith('.jpg'):
+    response = requests.get(image_url)
+    with open("image.jpg", "wb") as file:
+        file.write(response.content)
+    st.image("image.jpg")
+else:
+    st.write(image_url)
+
 st.write(body)
 
