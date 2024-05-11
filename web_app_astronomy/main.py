@@ -11,10 +11,6 @@ title = (content['title'])
 body = (content['explanation'])
 image_url = (content['url'])
 
-print(title)
-print(image_url)
-print(body)
-
 st.title(title + "\n")
 
 if image_url.endswith('.jpg'):
